@@ -8,6 +8,8 @@ function App() {
     <div className="App">
       <div>
         <BingoTable></BingoTable>
+        <BingoTable></BingoTable>
+        <BingoTable></BingoTable>
       </div>
     </div>
   );
