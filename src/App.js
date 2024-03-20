@@ -1,16 +1,17 @@
 import "./styles/App.css";
 import { BingoTable } from "./components/BingoTable/BingoTable";
+import S from "./components/styles/styles";
 
 function App() {
   const bingos = {};
 
   return (
     <div className="App">
-      <div>
+      <S.BingosContainer>
         <BingoTable></BingoTable>
         <BingoTable></BingoTable>
         <BingoTable></BingoTable>
-      </div>
+      </S.BingosContainer>
     </div>
   );
 }
