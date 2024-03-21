@@ -19,12 +19,24 @@ S.BingoTable = styled.div`
 
 S.BingoPiece = styled.input`
   aspect-ratio: 1;
-  background-color: blue;
   width: 50px;
 
   border: none;
 
   text-align: center;
+
+  ${(props) => {
+    if (props.isMarked) {
+      return `
+      background-color: green;
+      
+      `;
+    } else {
+      return `
+      background-color: blue;
+      `;
+    }
+  }}
 `;
 
 export default S;

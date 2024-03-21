@@ -12,7 +12,7 @@ export const BingoTable = ({callback, bingoId, bingo}) => {
 
   return <S.BingoTable>
     {
-      blankPieces.map(({isMarked}) => <BingoPiece isMarked={isMarked} callback={changeBingoPiece}/>)
+      Object.keys(bingo).map(({isMarked}) => <BingoPiece isMarked={isMarked} callback={changeBingoPiece}/>)
     }
   </S.BingoTable>
 }

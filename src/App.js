@@ -1,17 +1,55 @@
 import "./styles/App.css";
 import { BingoTable } from "./components/BingoTable/BingoTable";
 import S from "./components/styles/styles";
+import { useEffect, useState } from "react";
+import { BingoUtils } from "./utils";
 
 function App() {
-  const bingos = {};
+  const [bingos, setBingos] = useState({});
+  const [numbersPickeds, setNumbersPickeds] = useState([]);
+
+  const createNewBingo = () => {
+    const bingoId = Date.now();
+
+    bingos[bingoId] = BingoUtils.blankBingo;
+
+    // console.log(bingos);
+
+    setBingos({ ...bingos });
+  };
+
+  useEffect(() => console.log("update render"));
+
+  const changeBingoPiece = (bingoId, piece, newValue) => {
+    bingos[bingoId][piece] = newValue;
+
+    setBingos({ ...bingos });
+    console.log(bingos);
+  };
+
+  const pickNumber = () => {
+    const newPick = prompt("Qual o número que saiu?");
+    numbersPickeds.push(newPick);
+    console.log(numbersPickeds);
+
+    setNumbersPickeds([...numbersPickeds]);
+  };
 
   return (
     <div className="App">
       <S.BingosContainer>
-        <BingoTable></BingoTable>
-        <BingoTable></BingoTable>
-        <BingoTable></BingoTable>
+        {Object.keys(bingos).map((bingoId) => (
+          <BingoTable
+            key={bingoId}
+            callback={changeBingoPiece}
+            bingoId={bingoId}
+            bingo={bingos[bingoId]}
+          />
+        ))}
       </S.BingosContainer>
+
+      <button onClick={createNewBingo}>Criar novo bingo</button>
+      <button onClick={pickNumber}>Novo numero</button>
     </div>
   );
 }
