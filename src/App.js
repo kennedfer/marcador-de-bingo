@@ -4,6 +4,10 @@ import S from "./components/styles/styles";
 import { useState } from "react";
 import { BingoUtils } from "./utils";
 
+import xIcon from "./icons/x-icon.svg";
+import refreshIcon from "./icons/refresh-icon.svg";
+import diceIcon from "./icons/dice-icon.svg";
+
 function App() {
   const [bingos, setBingos] = useState({});
   const [numbersPickeds, setNumbersPickeds] = useState([]);
@@ -48,17 +52,25 @@ function App() {
     <div className="App">
       <S.BingosContainer>
         {Object.keys(bingos).map((bingoId) => (
-          <BingoTable
-            key={bingoId}
-            callback={changeBingoPiece}
-            bingoId={bingoId}
-            bingo={bingos[bingoId]}
-          />
+          <S.Bingo>
+            <S.BingoName type="text" defaultValue="Meu Bingo..." />
+            <BingoTable
+              key={bingoId}
+              callback={changeBingoPiece}
+              bingoId={bingoId}
+              bingo={bingos[bingoId]}
+            />
+          </S.Bingo>
         ))}
+
+        <S.NewBingoButton onClick={createNewBingo}>Novo Bingo</S.NewBingoButton>
       </S.BingosContainer>
 
-      <button onClick={createNewBingo}>Criar novo bingo</button>
-      <button onClick={pickNumber}>Novo numero</button>
+      <S.FloatingLayout>
+        <S.IconsButton clear src={xIcon}></S.IconsButton>
+        <S.IconsButton src={diceIcon} onClick={pickNumber}></S.IconsButton>
+        <S.IconsButton refresh src={refreshIcon}></S.IconsButton>
+      </S.FloatingLayout>
     </div>
   );
 }
