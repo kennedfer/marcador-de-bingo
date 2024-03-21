@@ -48,6 +48,20 @@ function App() {
     setNumbersPickeds([...numbersPickeds]);
   };
 
+  const deleteAllBingos = () => {
+    const canDelete = window.confirm(
+      "Tem certeza que deseja deletar todos os bingos?"
+    );
+    if (canDelete) setBingos({});
+  };
+
+  const clearNumbersPickeds = () => {
+    const canClear = window.confirm(
+      "Tem certeza que deseja iniciar um novo sorteio?"
+    );
+    if (canClear) setNumbersPickeds([]);
+  };
+
   return (
     <div className="App">
       <S.BingosContainer>
@@ -67,9 +81,17 @@ function App() {
       </S.BingosContainer>
 
       <S.FloatingLayout>
-        <S.IconsButton clear src={xIcon}></S.IconsButton>
+        <S.IconsButton
+          onClick={deleteAllBingos}
+          clear
+          src={xIcon}
+        ></S.IconsButton>
         <S.IconsButton src={diceIcon} onClick={pickNumber}></S.IconsButton>
-        <S.IconsButton refresh src={refreshIcon}></S.IconsButton>
+        <S.IconsButton
+          onClick={clearNumbersPickeds}
+          refresh
+          src={refreshIcon}
+        ></S.IconsButton>
       </S.FloatingLayout>
     </div>
   );

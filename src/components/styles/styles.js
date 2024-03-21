@@ -6,7 +6,10 @@ S.BingosContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  gap: 20px;
+  gap: 10px;
+
+  place-itens: center;
+  place-content: center;
 `;
 
 S.Bingo = styled.div`
@@ -16,14 +19,11 @@ S.Bingo = styled.div`
   gap: 5px;
   padding: 10px;
 
-  background-color: #7761f0;
-
-  border: 2px solid #4414ab;
   border-radius: 10px;
 `;
 
 S.BingoName = styled.input`
-  color: white;
+  color: #4414ab;
   background-color: transparent;
   border: none;
 
@@ -43,6 +43,8 @@ S.BingoTable = styled.div`
 
   box-sizing: border-box;
   overflow: hidden;
+
+  border: 2px solid #4414ab;
 `;
 
 S.BingoPiece = styled.input`
@@ -79,8 +81,10 @@ S.BingoPiece = styled.input`
 `;
 
 S.NewBingoButton = styled.button`
-  width: 294px;
-  height: 325px;
+  width: 275px;
+  height: 275px;
+
+  margin-top: 50px;
 
   background-color: rgb(228 235 254 / 27%);
   border: 5px dashed #e4ebfe;
@@ -134,7 +138,7 @@ S.IconsButton = styled.img`
       background-color: orange;
       `;
     }
-  }}
+  }};
 `;
 
 export default S;
