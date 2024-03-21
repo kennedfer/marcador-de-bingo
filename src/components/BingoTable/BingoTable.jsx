@@ -8,11 +8,9 @@ export const BingoTable = ({callback, bingoId, bingo}) => {
     callback(bingoId, piece, value);
   };
 
-  // const blankPieces = bingo ? bingo : Array.from(Array(25).keys());
-
   return <S.BingoTable>
     {
-      Object.keys(bingo).map(({isMarked}) => <BingoPiece isMarked={isMarked} callback={changeBingoPiece}/>)
+      Object.values(bingo).map(({isMarked}) => <BingoPiece isMarked={isMarked} callback={changeBingoPiece}/>)
     }
   </S.BingoTable>
 }

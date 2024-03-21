@@ -13,8 +13,6 @@ function App() {
 
     bingos[bingoId] = BingoUtils.blankBingo;
 
-    // console.log(bingos);
-
     setBingos({ ...bingos });
   };
 
@@ -23,8 +21,8 @@ function App() {
   const changeBingoPiece = (bingoId, piece, newValue) => {
     bingos[bingoId][piece] = newValue;
 
-    setBingos({ ...bingos });
     console.log(bingos);
+    setBingos({ ...bingos });
   };
 
   const pickNumber = () => {
