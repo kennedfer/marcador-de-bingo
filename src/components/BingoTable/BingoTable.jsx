@@ -2,8 +2,6 @@ import { BingoPiece } from "../BingoPiece/BingoPiece"
 import S from "../styles/styles"
 
 export const BingoTable = ({callback, bingoId, bingo}) => {
-  console.log(bingo);
-
   const changeBingoPiece = (piece, value) => {
     callback(bingoId, piece, value);
   };

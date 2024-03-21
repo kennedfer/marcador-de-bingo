@@ -1,15 +1,13 @@
 import S from "../styles/styles"
 
 export const BingoPiece =({callback, isMarked})=>{
-  console.log(isMarked);
-
   const changeBingoPiece = ({nativeEvent, target}) => {
     const pieceParent = (nativeEvent.srcElement.parentNode);
 
     const piecesFromCurrentBingo = Array.from(pieceParent.children);
     const pieceIndex = piecesFromCurrentBingo.indexOf(target);
 
-    callback(pieceIndex, {number: target.value, isMarked: true});
+    callback(pieceIndex, {number: target.value, isMarked: false});
   }
 
   const imposeMinMaxValue = (evt) =>{

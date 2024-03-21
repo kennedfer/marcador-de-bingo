@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { BingoTable } from "./components/BingoTable/BingoTable";
 import S from "./components/styles/styles";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BingoUtils } from "./utils";
 
 function App() {
@@ -16,12 +16,22 @@ function App() {
     setBingos(structuredClone(bingos));
   };
 
-  useEffect(() => console.log("update render"));
-
   const changeBingoPiece = (bingoId, piece, newValue) => {
     bingos[bingoId][piece] = newValue;
 
     console.log(bingos);
+    setBingos(structuredClone(bingos));
+  };
+
+  const checkPiecesToMark = () => {
+    Object.entries(bingos).forEach(([bingoId, pieces]) => {
+      Object.values(pieces).forEach(({ number }, index) => {
+        if (numbersPickeds.includes(number)) {
+          bingos[bingoId][index].isMarked = true;
+        }
+      });
+    });
+
     setBingos(structuredClone(bingos));
   };
 
@@ -30,6 +40,7 @@ function App() {
     numbersPickeds.push(newPick);
     console.log(numbersPickeds);
 
+    checkPiecesToMark();
     setNumbersPickeds([...numbersPickeds]);
   };
 
