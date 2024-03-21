@@ -13,7 +13,7 @@ function App() {
 
     bingos[bingoId] = BingoUtils.blankBingo;
 
-    setBingos({ ...bingos });
+    setBingos(structuredClone(bingos));
   };
 
   useEffect(() => console.log("update render"));
@@ -22,7 +22,7 @@ function App() {
     bingos[bingoId][piece] = newValue;
 
     console.log(bingos);
-    setBingos({ ...bingos });
+    setBingos(structuredClone(bingos));
   };
 
   const pickNumber = () => {
