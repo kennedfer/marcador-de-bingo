@@ -1,12 +1,18 @@
 import { BingoPiece } from "../BingoPiece/BingoPiece"
 import S from "../styles/styles"
 
-export const BingoTable = () => {
-  const blankPieces = Array.from(Array(25).keys());
+export const BingoTable = ({callback, bingoId, bingo}) => {
+  console.log(bingo);
+
+  const changeBingoPiece = (piece, value) => {
+    callback(bingoId, piece, value);
+  };
+
+  // const blankPieces = bingo ? bingo : Array.from(Array(25).keys());
 
   return <S.BingoTable>
     {
-      blankPieces.map(_ => <BingoPiece></BingoPiece>)
+      blankPieces.map(({isMarked}) => <BingoPiece isMarked={isMarked} callback={changeBingoPiece}/>)
     }
   </S.BingoTable>
 }
