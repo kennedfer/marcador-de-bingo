@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { BingoTable } from "./components/BingoTable/BingoTable";
 import S from "./components/styles/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BingoUtils } from "./utils";
 
 import xIcon from "./icons/x-icon.svg";
@@ -30,9 +30,7 @@ function App() {
   const checkPiecesToMark = () => {
     Object.entries(bingos).forEach(([bingoId, pieces]) => {
       Object.values(pieces).forEach(({ number }, index) => {
-        if (numbersPickeds.includes(number)) {
-          bingos[bingoId][index].isMarked = true;
-        }
+        bingos[bingoId][index].isMarked = numbersPickeds.includes(number);
       });
     });
 
@@ -59,8 +57,13 @@ function App() {
     const canClear = window.confirm(
       "Tem certeza que deseja iniciar um novo sorteio?"
     );
-    if (canClear) setNumbersPickeds([]);
+    if (canClear) {
+      setNumbersPickeds([]);
+      checkPiecesToMark();
+    }
   };
+
+  useEffect(() => checkPiecesToMark(), [numbersPickeds]);
 
   return (
     <div className="App">
