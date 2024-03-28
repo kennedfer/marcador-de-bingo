@@ -18,7 +18,6 @@ function App() {
 
   const createNewBingo = () => {
     const bingoId = BingoUtils.getBingoId();
-
     bingos[bingoId] = BingoUtils.blankBingo;
 
     refreshBingos();
@@ -26,8 +25,6 @@ function App() {
 
   const changeBingoPiece = (bingoId, piece, newValue) => {
     bingos[bingoId].pieces[piece] = newValue;
-
-    console.log(bingos);
     refreshBingos();
   };
 
@@ -45,7 +42,6 @@ function App() {
   const pickNumber = () => {
     const newPick = prompt("Qual o número que saiu?");
     numbersPickeds.push(newPick);
-    console.log(numbersPickeds);
 
     checkPiecesToMark();
     setNumbersPickeds([...numbersPickeds]);
@@ -68,6 +64,10 @@ function App() {
     }
   };
 
+  function changeBingoType({ target }, bingoId) {
+    bingos[bingoId].type = target.value;
+  }
+
   useEffect(() => checkPiecesToMark(), [numbersPickeds]);
 
   return (
@@ -82,6 +82,10 @@ function App() {
               bingoId={bingoId}
               bingo={bingos[bingoId]}
             />
+            <select onChange={(e) => changeBingoType(e, bingoId)}>
+              <option value="QUINA">Quina</option>
+              <option value="FULL">Cartela cheia</option>
+            </select>
           </S.Bingo>
         ))}
 
