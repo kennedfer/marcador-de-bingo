@@ -21,16 +21,17 @@ function App() {
   };
 
   const changeBingoPiece = (bingoId, piece, newValue) => {
-    bingos[bingoId][piece] = newValue;
+    bingos[bingoId].pieces[piece] = newValue;
 
     console.log(bingos);
     setBingos(structuredClone(bingos));
   };
 
   const checkPiecesToMark = () => {
-    Object.entries(bingos).forEach(([bingoId, pieces]) => {
-      Object.values(pieces).forEach(({ number }, index) => {
-        bingos[bingoId][index].isMarked = numbersPickeds.includes(number);
+    Object.entries(bingos).forEach(([bingoId, bingo]) => {
+      Object.values(bingo.pieces).forEach(({ number }, index) => {
+        bingos[bingoId].pieces[index].isMarked =
+          numbersPickeds.includes(number);
       });
     });
 
