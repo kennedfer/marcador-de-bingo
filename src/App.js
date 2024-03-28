@@ -13,7 +13,7 @@ function App() {
   const [numbersPickeds, setNumbersPickeds] = useState([]);
 
   const createNewBingo = () => {
-    const bingoId = Date.now();
+    const bingoId = BingoUtils.getBingoId();
 
     bingos[bingoId] = BingoUtils.blankBingo;
 

@@ -1,3 +1,7 @@
+export function getBingoId() {
+  return Date.now();
+}
+
 export const blankBingo = {
   type: "QUINA",
   pieces: {
