@@ -1,3 +1,12 @@
+const CHECK_BINGO = {
+  QUINA: checkQuina,
+  FULL: checkFull,
+};
+
+export function checkBingo(bingo) {
+  return CHECK_BINGO[bingo.type](bingo);
+}
+
 export function getBingoId() {
   return Date.now();
 }
@@ -32,3 +41,22 @@ export const blankBingo = {
     24: { number: "", isMarked: false },
   },
 };
+
+export function checkQuina(bingo) {
+  const pieces = Object.values(bingo.pieces);
+  for (let x = 1; x < 5; x++) {
+    let piecesMarkedsByRow = 0;
+
+    for (let y = 0; y < 5; y++) {
+      if (pieces[x * 5 + y].isMarked) piecesMarkedsByRow++;
+    }
+
+    if (piecesMarkedsByRow == 5) return true;
+  }
+
+  return false;
+}
+
+export function checkFull() {
+  return false;
+}

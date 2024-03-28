@@ -12,6 +12,14 @@ function App() {
   const [bingos, setBingos] = useState({});
   const [numbersPickeds, setNumbersPickeds] = useState([]);
 
+  function checkBingos() {
+    const winnersBingos = Object.values(bingos).filter((bingo) =>
+      BingoUtils.checkBingo(bingo)
+    );
+
+    console.log(winnersBingos);
+  }
+
   const refreshBingos = () => {
     setBingos(structuredClone(bingos));
   };
@@ -44,6 +52,7 @@ function App() {
     numbersPickeds.push(newPick);
 
     checkPiecesToMark();
+    checkBingos();
     setNumbersPickeds([...numbersPickeds]);
   };
 
