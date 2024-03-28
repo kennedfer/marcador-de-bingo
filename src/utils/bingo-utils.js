@@ -53,12 +53,17 @@ export function checkQuina(bingo) {
       if (pieces[x + y * 5].isMarked) piecesMarkedsByColumn++;
     }
 
-    if (piecesMarkedsByRow == 5 || piecesMarkedsByColumn == 5) return true;
+    if (piecesMarkedsByRow === 5 || piecesMarkedsByColumn === 5) return true;
   }
 
   return false;
 }
 
-export function checkFull() {
-  return false;
+export function checkFull(bingo) {
+  const pieces = Object.values(bingo.pieces);
+  let piecesMarkeds = 0;
+  pieces.forEach((piece) => (piecesMarkeds += piece.isMarked ? 1 : 0));
+  console.log(piecesMarkeds);
+
+  return piecesMarkeds == 24;
 }
