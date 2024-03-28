@@ -12,19 +12,23 @@ function App() {
   const [bingos, setBingos] = useState({});
   const [numbersPickeds, setNumbersPickeds] = useState([]);
 
+  const refreshBingos = () => {
+    setBingos(structuredClone(bingos));
+  };
+
   const createNewBingo = () => {
     const bingoId = BingoUtils.getBingoId();
 
     bingos[bingoId] = BingoUtils.blankBingo;
 
-    setBingos(structuredClone(bingos));
+    refreshBingos();
   };
 
   const changeBingoPiece = (bingoId, piece, newValue) => {
     bingos[bingoId].pieces[piece] = newValue;
 
     console.log(bingos);
-    setBingos(structuredClone(bingos));
+    refreshBingos();
   };
 
   const checkPiecesToMark = () => {
@@ -35,7 +39,7 @@ function App() {
       });
     });
 
-    setBingos(structuredClone(bingos));
+    refreshBingos();
   };
 
   const pickNumber = () => {
