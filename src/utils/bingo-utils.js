@@ -44,14 +44,16 @@ export const blankBingo = {
 
 export function checkQuina(bingo) {
   const pieces = Object.values(bingo.pieces);
-  for (let x = 1; x < 5; x++) {
+  for (let x = 0; x < 5; x++) {
     let piecesMarkedsByRow = 0;
+    let piecesMarkedsByColumn = 0;
 
     for (let y = 0; y < 5; y++) {
       if (pieces[x * 5 + y].isMarked) piecesMarkedsByRow++;
+      if (pieces[x + y * 5].isMarked) piecesMarkedsByColumn++;
     }
 
-    if (piecesMarkedsByRow == 5) return true;
+    if (piecesMarkedsByRow == 5 || piecesMarkedsByColumn == 5) return true;
   }
 
   return false;
