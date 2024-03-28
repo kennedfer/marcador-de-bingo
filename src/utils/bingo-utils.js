@@ -65,5 +65,5 @@ export function checkFull(bingo) {
   pieces.forEach((piece) => (piecesMarkeds += piece.isMarked ? 1 : 0));
   console.log(piecesMarkeds);
 
-  return piecesMarkeds == 24;
+  return piecesMarkeds === 24;
 }
