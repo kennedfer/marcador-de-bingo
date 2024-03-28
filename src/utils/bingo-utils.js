@@ -61,9 +61,10 @@ export function checkQuina(bingo) {
 
 export function checkFull(bingo) {
   const pieces = Object.values(bingo.pieces);
-  let piecesMarkeds = 0;
-  pieces.forEach((piece) => (piecesMarkeds += piece.isMarked ? 1 : 0));
-  console.log(piecesMarkeds);
+  let piecesMarkeds = pieces.reduce(
+    (accumulator, piece) => (accumulator += piece.isMarked ? 1 : 0),
+    0
+  );
 
   return piecesMarkeds === 24;
 }

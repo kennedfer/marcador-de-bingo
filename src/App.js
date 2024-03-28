@@ -77,7 +77,7 @@ function App() {
     bingos[bingoId].type = target.value;
   }
 
-  useEffect(() => checkPiecesToMark(), [numbersPickeds]);
+  useEffect(checkPiecesToMark, [numbersPickeds]);
 
   return (
     <div className="App">
