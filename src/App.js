@@ -12,12 +12,16 @@ function App() {
   const [bingos, setBingos] = useState({});
   const [numbersPickeds, setNumbersPickeds] = useState([]);
 
+  function changeBingoName(evt, bingoId) {
+    bingos[bingoId].name = evt.target.value;
+  }
+
   function checkBingos() {
     const winnersBingos = Object.values(bingos).filter((bingo) =>
       BingoUtils.checkBingo(bingo)
     );
 
-    console.log(winnersBingos);
+    winnersBingos.forEach(bingo =>  alert("Voce ganhou no bingo: "+bingo.name));
   }
 
   const refreshBingos = () => {
@@ -84,7 +88,7 @@ function App() {
       <S.BingosContainer>
         {Object.keys(bingos).map((bingoId) => (
           <S.Bingo>
-            <S.BingoName type="text" defaultValue="Meu Bingo..." />
+            <S.BingoName type="text" onChange={(evt)=>changeBingoName(evt, bingoId)} defaultValue="Meu Bingo..." />
             <BingoTable
               key={bingoId}
               callback={changeBingoPiece}

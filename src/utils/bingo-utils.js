@@ -12,6 +12,7 @@ export function getBingoId() {
 }
 
 export const blankBingo = {
+  name:"Meu Bingo...",
   type: "QUINA",
   pieces: {
     0: { number: "", isMarked: false },
