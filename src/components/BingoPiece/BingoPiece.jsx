@@ -1,6 +1,6 @@
 import S from "../styles/styles"
 
-export const BingoPiece =({callback, isMarked})=>{
+export const BingoPiece =({callback, localNumber, isMarked})=>{
   const changeBingoPiece = ({nativeEvent, target}) => {
     const pieceParent = (nativeEvent.srcElement.parentNode);
 
@@ -21,5 +21,5 @@ export const BingoPiece =({callback, isMarked})=>{
     changeBingoPiece(evt);
   }
 
-  return <S.BingoPiece isMarked={isMarked} onChange={imposeMinMaxValue} min="1" max="99" type="number" />
+  return <S.BingoPiece isMarked={isMarked} onChange={imposeMinMaxValue} defaultValue={localNumber} min="1" max="99" type="number" />
 }

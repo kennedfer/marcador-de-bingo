@@ -9,7 +9,7 @@ import refreshIcon from "./icons/refresh-icon.svg";
 import diceIcon from "./icons/dice-icon.svg";
 
 function App() {
-  const [bingos, setBingos] = useState({});
+  const [bingos, setBingos] = useState(BingoUtils.getBingosFromLocalStorage());
   const [numbersPickeds, setNumbersPickeds] = useState([]);
 
   function changeBingoName(evt, bingoId) {
@@ -37,6 +37,9 @@ function App() {
 
   const changeBingoPiece = (bingoId, piece, newValue) => {
     bingos[bingoId].pieces[piece] = newValue;
+
+    BingoUtils.saveBingosToLocalStorage(bingos);
+
     refreshBingos();
   };
 

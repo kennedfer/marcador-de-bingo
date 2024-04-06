@@ -3,6 +3,18 @@ const CHECK_BINGO = {
   FULL: checkFull,
 };
 
+export function getBingosFromLocalStorage(){
+  const strBingos = localStorage.getItem("bingos");
+  if(strBingos) return JSON.parse(strBingos);
+
+  return {};
+}
+
+export function saveBingosToLocalStorage(bingos){
+  const strBingos = JSON.stringify(bingos);
+  localStorage.setItem("bingos", strBingos);
+}
+
 export function checkBingo(bingo) {
   return CHECK_BINGO[bingo.type](bingo);
 }
